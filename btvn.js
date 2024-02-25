@@ -89,22 +89,12 @@ const listProductCategory = (products, nameCategory) => {
   })
   return productCategory
 }
-// console.log('=========Bài 1===========')
-// listProductCategory(products, "Home").forEach(function (item) {
-//   console.log(item)
-// })
-// console.log('=============================')
-
 // // 2. hiển thị list product có price > 50 và sắp xếp sản phẩm có giá từ cao xuống thấp
 
 const productPrice50 = products.filter(function (product) {
   return product.price > 50
 })
 productPrice50.sort((a, b) => b.price - a.price)
-// console.log('=========Bài 2===========')
-// console.log(productPrice50)
-// console.log('=============================')
-
 // 3. hiển thị list order của Emma Davis
 //(gợi ý: dùng 'Emma Davis' để tìm userId, dùng userId để lọc danh sách order)
 
@@ -126,33 +116,14 @@ const listOrdersUser = (users, orders, userName) => {
   }
 
 }
-// console.log('=========Bài 3===========')
-// console.log(listOrdersUser(users, orders, 'Emma Davis'))
-// console.log('=============================')
-
 // 4. tính tổng tiền bill của Emma Davis (gợi ý: dùng reduce)
-const findPriceProduct = (products, productID) => {
-  const priceProduct = products.find(function (product) {
-    return product.id === productID
-  })
-  return priceProduct.price
-}
-// console.log('price ', findPrice(products, 4))
-
-const totalBill = (users, orders, products, userName) => {
-  const total = listOrdersUser(users, orders, userName).reduce(function (item, curr) {
-    let price = findPriceProduct(products, curr.productId)
-    // console.log(price)
-    return item + curr.quantity * price
-  }, 0)
-  // console.log(orderEmma(users, orders))
-  return total
-}
-// console.log('=========Bài 4===========')
-// console.log('Tổng tiền bill của Emma Davis', totalBill(users, orders, products, 'Emma Davis'))
-// console.log('Tổng tiền bill của Emily Johnson', totalBill(users, orders, products, 'Emily Johnson'))
-// console.log('=============================')
-
+const emmaTotal = emmaOrders.reduce(function(total, order) {
+    const product = products.find(function(product) {
+        return product.id === order.productId;
+    });
+    return total + product.price * order.quantity;
+}, 0);
+console.log(emmaTotal);
 // 5. hiển thị top 3 users chi tiêu mạnh nhất
 const listTotalBill = (users, orders, products) => {
   let listUserBill = []
@@ -168,42 +139,22 @@ const listTotalBill = (users, orders, products) => {
 };
 let listTopBill = listTotalBill(users, orders, products).sort((a, b) => b.total - a.total)
 
-// console.log('=========Bài 5===========')
-// for (let i = 0; i < 3; i++) {
-//   console.log(listTopBill[i])
-// }
-
-// console.log(listTotalBill(users, orders, products))
-// console.log('=============================')
-
-
 // 6. so sánh tổng tiền bill của Emily Johnson và Emma Davis
 let totalBillEmily = totalBill(users, orders, products, 'Emily Johnson')
 let totalBillEmma = totalBill(users, orders, products, 'Emma Davis')
-// console.log('=========Bài 6===========')
-// console.log('Tổng tiền bill của Emma Davis', totalBill(users, orders, products, 'Emma Davis'))
-// console.log('Tổng tiền bill của Emily Johnson', totalBill(users, orders, products, 'Emily Johnson'))
-
-// if (totalBillEmily > totalBillEmma) {
-//   console.log('Tổng tiền bill của Emily Johnson lớn hơn Emma Davis')
-// } else {
-//   console.log('Tổng tiền bill của Emily Johnson nhỏ hơn Emma Davis')
-// }
-// console.log('=============================')
-
 // 7. kiểm tra xem có phải tất cả user đều có bill > 400
-
-let allBill = listTopBill.every(function (item) {
-  return item > 400
+const over400 = users.every(function(user) {
+    const userOrders = orders.filter(function(order) {
+        return order.userId === user.id;
+    });
+    const total = userOrders.reduce(function(total, order) {
+        const product = products.find(function(product) {
+            return product.id === order.productId;
+        });
+        return total + product.price * order.quantity;
+    }, 0);
+    return total > 400;
 });
-
-// console.log('=========Bài 7===========')
-// if (allBill) {
-//   console.log('Tất cả user đều có bill > 400')
-// } else {
-//   console.log('Không phải tất cả user đều có bill > 400')
-// }
-// console.log('=============================')
 
 // 8. hiển thị top 3 sản phẩm đc mua nhiều nhất
 const findListProductsOrdered = (products, orders) => {
@@ -224,10 +175,3 @@ const findListProductsOrdered = (products, orders) => {
 }
 let listProductsOrdered = findListProductsOrdered(products, orders)
 listProductsOrdered.sort((a, b) => b.totalQuantity - a.totalQuantity)
-// console.log('=========Bài 8===========')
-// for (let i = 0; i < 3; i++) {
-//   console.log(listProductsOrdered[i])
-
-// }
-// console.log('=============================')
-// console.log(listProductsOrdered(products, orders))
