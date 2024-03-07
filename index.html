@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <h1>MENU</h1>
+            <button onclick="handleUser()" id="user" class="button-box"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAmFJREFUSEvl1knIjVEcx/HPS+aNcWVnYSND5lKmiNgQC2RFyZBMCymlWFjItEBSNkRKSUJIFBtTkSHWZCEkRZHp+b+dt+77vPfe57n3vvUunN29zzm/7/kP53dOmx4abT3E1Qy4N8ZhStr0QzzH70aCaBS8DEcxMgd5i824XBbeCPgwthYIH8KOMvCy4Pm4mQQfYReepN+TsL8i9XNxpwheFnwL81ItJ+NnTrgvHmMsrmNRd4B74Rv6YxOO1xDdiGP4mvXBEPypBy8TcXTwsySyGNdqCEaUV9O3MXjVKjg6+F0SWYXzNQRX4lz6FmvetwqO9Z8wFPW69mCW5u34mKV8RHfUODT2YXcyiaW4khNegovZvDCXPdjbXeBorJcYlQTvpy7ukzp5Zvr/TXK1fNd32UeZ5upYFE12NoGqBRS2GXWODRaORsAhFkdrAxZgepb+XynyOLsni45Q5W4aBRdGUnZCWfAwzMhcaRrCufrlAD9S5A8yh4v6fy7aQBF4MA5gLaWv0L8p7TuTi1XdQz3wcpzA8IqV35OLVfPq8RhYMfcD1uNSNXItcFzykbaO76dxBC+ycxoR1dKKS2IL1qQJMXdqKkOnNdXAcdPE0RiNiHAh7hXVLPd9VvL0yMDrLOrIRqcsVQOHLW5LQuuy18apBqEd0yPNUaoYXay2GjiiHIAbKdomue3LbiMeBqE5qN45jmMTJh9jBS60QsVqnEkacUd/6dDLRzyx4kkTtY2oWxmVd3RYbvRO+8iDZ1e8l+bgbivUbH1NvTw4DGNCgj2tTE2TG6ipV+RcTfKKl/1/4H9Qfmkf+jdIxwAAAABJRU5ErkJggg=="/>UserList</button>
+            <button onclick="handleTodo()" id="todo" class="button-box"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAATBJREFUSEvtlrFqAkEQhj97IQ9gYZmUgVQGJPEFBLuUvkEeQX0Bn8HWxtYySREUYi/YBXyAVCkTHdiFy3K3zFzu2Ctc2Gb3v/+ff2b3dlokGq1EuliEpy7IV0Bmdjye12TK8LioJ4vwr2Oa5ZCL2MTtqzhVIEdYu3AfmAN3YCpFXmol2B3wDGyygNDxFXAE2hUfui+gA3x73lD4HnivWNTT9YBtkbCczJeahAfZ2xA6bpTwW+aOapMh9/whAJsdJxP+BBZaqw43Brr/dWzULISbU51MOFZj/xvVBGd2nEw4drj8i1SLYw2pBmNOtYZUg7kI/8lSox4JTf00mGbW+AbYa8IvgbkGDkUdiKyvgFEJ4tgnS+Ap1uzJnnQlQ+C2gi7zB/gA1mFUlr660iQkEz4BS89HH6kl+mEAAAAASUVORK5CYII="/>ToDoList</button>
+            <button onclick="handlePhoto()" id="photo" class="button-box"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvt1r0uBVEQwPHfbX0knsBHNL46ofIEatFSSAgPgVaPRCJ6GpUnoEGiUlAQ8QYEJbvsTdbNsrv3bCyJ02yyZ2b+M3MmM9NQ02nUxFUE3IkZDAQ4eYt9vDRt5IF7cI7BAGhT9QrjeIp/5IGXsVkBtGliAbtFwGtYTbTynPzOv9fkcj36xjZzI/4Ht/vcvzPVWe9Z5o3j6t/AXUZavo04BDyPPZxg6qfAIziLou1IgCvYaoFXFnE3HhNY3NmGU6BnDOE+9a8y8DEOMYa5jNS2prwScNE2mk55MLgPl4gnVt6Jh8FoUuXB4GlM5hFT96eR/FHU74PBJZifRP8OeAnb7YaZobeIndaxmNW54g3kAv0VwK8xgYci4FimC7PoDYDfRBV+8NXOVWYgBPjwoZpeZ2oDV1VIhXaztFBVhVQaXFUhvW+ReaeQd3lG2rmvDfwGefZjH31utHUAAAAASUVORK5CYII="/>PhotoList</button>
+            <button onclick="handleAlbum()" id="album"  class="button-box"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAZZJREFUSEvd1ztrVEEUAOAvYGytElsllYnPRkKKYIyPTrCLpUV6UcFSf0E0XUoLC7sEAikConbii5AiqRQ7LQKpDMFC3ANz4eZ692bdneyCU+3ex/nmcXbm7JABtaEBudrBxzGLS4jP3bbf+Ii1aoA6+CxeYbRbrea9l7hTvl4Hb+JcRrQINYavxZcqfBI/0s0FPOixA1fwOsWYwZt28DTepptXSy9163cMt30Qk7iGfSzjSwe96Rk+gQ2cStgi7vUDjmSLpCvah9ZP5HI/4NMp0eawgyU8S/CjlBfvajrS81QXMW/gVyk7z+MTvuMMflbwbHDEDWA77WifMZGw57h7VHCggV3APB5WoFtYLV3LMuJjad8NdAvjNWu6m2Ygpj5aFvhxK9KTDjJ5HTdzwlP/cFK9x16uEXcw2L8eyTLV/z/czQib3mk8FstrMjA4jr0XGfXY2b4V8aoVSLkQuI2VjPCBUE2lz1Pc7xcczlEVe43JFXCcNlGgjWQe7aFweFHEX2+t8UUMZ+pAY3JlMg4PM7D/Tn8A2HZ0H7ZMVeIAAAAASUVORK5CYII="/>Album List</button>
+            <button onclick="handlePost()" id="post" class="button-box"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAa9JREFUSEvtlj8oRXEUxz9PSmKxWFgU2chEmWws2CySTRZKkpB/IUmKRTbJYsNAJpNiEpsoC4vFQlLCPa9z6/Trve6fd3nKe3V7t3PP7/s559zfueeXIk+/VJ64FMC/Vnm31JPAIFCVcASPwCaw6OtacAdwlDDQlWsHTsRowZLtgnq+AmUJBWG1hLHkgmc8w6zCaoBdoDVH+BnQC9yrzpzPsBlbsNjlGtYISyMG8AZMAOvAl14ikREs2QrcrUStZt8cEn6hWd4Zf4GHAu8DA8CTLigCRoF5oCRLAO/ANLDq/X+qTyWwBXSHBYvfMzACbBtQPbAHNDrwK6AHuDH2fmDNK3eFsQWW2uqeAn3AgxqLgXHNTkxShWXgQ59XAztAW4bKRALL+hdPeArYMBulQYWvzb4Y0pYsz/I6IoN9nXPN/tYRrtMsWwI2YGyw6MomEoEVhYxpN2TbdDaWnMC+0KXeNIVss1DtFEErkmsiGUciRunjOMJBa/5WxnYsBkUe97l8C9KHATudOoGDuIoh13UBhy5YBoF80OUk8hNHn2MdPOkBUjjehnxVubv9v1J/AzG/WB9938PnAAAAAElFTkSuQmCC"/>PostList</button>
+        </div>
+
+        <div id="content" class="content">
+            <h1>WELCOME</h1>
+            <p>Click on the buttons to see the list of users, todos, photos, albums, and posts.</p>
+        </div>
+
+        <div id="modal" class="modal-user">
+            <div class="modal-content">
+                <span class="close" onclick="handleClose()"></span>
+                <div id="info"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>
